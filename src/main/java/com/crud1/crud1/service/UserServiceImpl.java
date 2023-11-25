@@ -10,10 +10,8 @@ import com.crud1.crud1.dto.UserDTO;
 import com.crud1.crud1.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 @Service
-@Log4j2
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     

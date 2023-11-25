@@ -7,8 +7,29 @@
 </head>
 <body>
     메인페이지
-    <a src="/user/register">
-        <button type="button" >회원가입페이지</button>
-    </a>
+    <div>
+        <button type="button" onclick="registerPage()">회원가입페이지</button>
+    </div>
+    <div>
+        <button type="button" onclick="loginPage()">로그인페이지</button>
+    </div>
+
+    <div>
+        <button type="button" onclick="bookRegisterPage()">도서등록</button>
+    </div>
+
 </body>
+
+<script>
+    function registerPage(){
+        location.href="http://localhost:8080/user/register";
+    }
+    function loginPage(){
+        location.href="http://localhost:8080/user/login";
+    }
+    function bookRegisterPage(){
+        location.href="http://localhost:8080/book/register";
+    }
+    
+</script>
 </html>

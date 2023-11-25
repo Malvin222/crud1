@@ -24,7 +24,7 @@ public class UserController {
         log.info("=====GET user register======");
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public String userRegisterPost(UserDTO userDTO){
 
         log.info("=====POST user register=====");

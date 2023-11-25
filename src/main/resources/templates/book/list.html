@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+            <thead>
+                <tr>
+                    <th>도서명</th>
+                    <th>저자</th>
+                    <th>등록일</th>
+                    <th>수정일</th>
+                    <th>도서내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book : ${bookDTOList}">
+                    <td>
+                        <a th:href="@{'/read/' + ${book.no}}">
+                            <span th:="${book.bookname}"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <span th:text="${book.bookauthor}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${#temporals.format(book.bookregdate,'yyyy-MM-dd')}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${#temporals.format(book.bookmoddate,'yyyy-MM-dd')}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${book.bookcontent}"></span>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>
