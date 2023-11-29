@@ -3,40 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="../css/style.css" rel="stylesheet" />
+    <title>도서리스트</title>
 </head>
 <body>
+    <div>
     <table>
-            <thead>
-                <tr>
-                    <th>도서명</th>
-                    <th>저자</th>
-                    <th>등록일</th>
-                    <th>수정일</th>
-                    <th>도서내용</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="book : ${bookDTOList}">
-                    <td>
-                        <a th:href="@{'/read/' + ${book.no}}">
-                            <span th:="${book.bookname}"></span>
-                        </a>
-                    </td>
-                    <td>
-                        <span th:text="${book.bookauthor}"></span>
-                    </td>
-                    <td>
-                        <span th:text="${#temporals.format(book.bookregdate,'yyyy-MM-dd')}"></span>
-                    </td>
-                    <td>
-                        <span th:text="${#temporals.format(book.bookmoddate,'yyyy-MM-dd')}"></span>
-                    </td>
-                    <td>
-                        <span th:text="${book.bookcontent}"></span>
-                    </td>
-                </tr>
+        <thead>
+            <tr>
+                <th>도서명</th>
+                <th>저자</th>
+                <th>등록일</th>
+                <th>수정일</th>
+                <th>도서내용</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${bookDTOList}">
+                <td>
+                    <a th:href="@{/book/read(bookid=${book.bookid})}">
+                    <span th:text="${book.bookname}"></span>
+                    </a>
+                </td>
+                <td>
+                    <span th:text="${book.bookauthor}"></span>
+                </td>
+                <td>
+                    <span th:text="${book.bookregdate}"></span>
+                </td>
+                <td>
+                    <span th:text="${book.bookmoddate}"></span>
+                </td>
+                <td>
+                    <span th:text="${bookcontent}"></span>
+                </td>
+            </tr>
         </tbody>
     </table>
+    </div>
+    
 </body>
 </html>

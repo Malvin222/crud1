@@ -7,7 +7,7 @@ import com.crud1.crud1.dto.BookDTO;
 public interface BookService {
     Long bookregister(BookDTO bookdto);
 
-    List<BookDTO> getBooklist();
+    List<BookDTO> findAll();
 
     void bookremove(Long bookno);
 

@@ -36,9 +36,11 @@ public class BookController {
 
     @GetMapping("/list")
     public void booklist(Model model){
-        List<BookDTO> bookDTOList = bookService.getBooklist();
+
+        List<BookDTO> bookDTOList = bookService.findAll();
         model.addAttribute("bookDTOList", bookDTOList);
         log.info("=====bookDTOList=====");
         log.info(bookDTOList);
     }
+    
 }

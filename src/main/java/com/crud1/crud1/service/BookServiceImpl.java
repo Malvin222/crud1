@@ -1,8 +1,8 @@
 package com.crud1.crud1.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -28,21 +28,12 @@ public class BookServiceImpl implements BookService {
     }
     
     @Override
-    public List<BookDTO> getBooklist(){
+    public List<BookDTO> findAll(){
         List<Book> bookDTOs = bookRepository.findAll();
-        List<BookDTO> bookDTOList = new ArrayList<>();
-        for(Book book : bookDTOs){
-            BookDTO bookDTO = BookDTO.builder()
-            .bookno(book.getBookno())
-            .bookname(book.getBookname())
-            .bookauthor(book.getBookauthor())
-            .bookcontent(book.getBookcontent())
-            .bookregdate(book.getBookregdate())
-            .bookmoddate(book.getBookmoddate())
-            .build();
-            bookDTOList.add(bookDTO);
-        }
-        return bookDTOList;
+        
+        return bookDTOs.stream()
+            .map(book -> modelMapper.map(book,BookDTO.class))
+            .collect(Collectors.toList());
     }
 
     @Override
