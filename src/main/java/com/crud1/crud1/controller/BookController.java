@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.crud1.crud1.dto.BookDTO;
 import com.crud1.crud1.service.BookService;
@@ -53,6 +55,34 @@ public class BookController {
         log.info(bookDTO);
         return "book/read";
         }
+
+    @GetMapping("/modify")
+    public String bookModify(Long bookno, Model model){
+        BookDTO bookDTO = bookService.bookread(bookno);
+        model.addAttribute("bookDTORead", bookDTO);
+        
+        log.info("=====bookDTOModifyGET=====");
+        log.info(bookDTO);
+
+        return "book/modify";
+    }
+
+    @PostMapping("/modify")
+    public String bookModifyPost(BookDTO bookDTO, RedirectAttributes redirectAttributes){
+        
+        bookService.bookmodify(bookDTO);
+        redirectAttributes.addFlashAttribute("result","modified");
+
+        return "redirect:/book/read?bookno=" + bookDTO.getBookno();
+    }
+
+    @PostMapping("/remove")
+    public String bookRemove(@RequestParam("bookno") Long bookno){
+        bookService.bookremove(bookno);
+        
+
+        return "redirect:/book/list";
+    }
 
 
 }

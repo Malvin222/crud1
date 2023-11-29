@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/style.css" rel="stylesheet" />
-    <title>도서리스트</title>
+    <title>도서목록</title>
 </head>
 <body>
     <div>
@@ -16,10 +16,11 @@
                 <th>등록일</th>
                 <th>수정일</th>
                 <th>도서내용</th>
+                <th>삭제</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="book : ${bookDTOList}">
+            <tr th:each="book, rowStat : ${bookDTOList}">
                 <td>
                     <a th:href="@{/book/read(bookno=${book.bookno})}">
                     <span th:text="${book.bookname}"></span>
@@ -35,12 +36,26 @@
                     <span th:text="${book.bookmoddate}"></span>
                 </td>
                 <td>
-                    <span th:text="${bookcontent}"></span>
+                    <span th:text="${book.bookcontent}"></span>
+                </td>
+                <td>
+                    <form id ="delFrm-${rowStat.index}" method="post" th:action="@{/book/remove}">
+                        <input type="hidden" name="bookno" th:value="${book.bookno}"/>
+                        <button type="submit" onclick="removeFrm(${rowStat.index})">삭제</button>
+                    </form>
                 </td>
             </tr>
         </tbody>
     </table>
     </div>
-    
+    <div>
+        <a th:href="@{/}"><button type="button">메인페이지</button></a>
+    </div>
 </body>
+<script>
+    // function removeFrm(index){
+    //     document.getElementById("delFrm-"+index).submit();
+    // }
+
+</script>
 </html>

@@ -13,6 +13,6 @@ public interface BookService {
 
     void bookremove(Long bookno);
 
-    void bookmodify(BookDTO bookdto);
+    void bookmodify(BookDTO bookDTO);
 
 }

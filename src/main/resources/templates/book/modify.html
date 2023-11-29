@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서수정</title>
+</head>
+<body>
+    <body>
+        <div>
+            <form name="frm" method="post">
+                <div>
+                    도서이름 <input type="text" id="bookname" name="bookname" th:value="${bookDTORead.bookname}">
+                </div>
+                <div>
+                    저자 <input type="text" id="bookauthor" name="bookauthor" th:value="${bookDTORead.bookauthor}">
+                </div>
+                <div>
+                    도서내용 <input type="text" id="bookcontent" name="bookcontent" th:value="${bookDTORead.bookcontent}">
+                </div>
+                <button type="submit">변경</button>
+                <button type="reset">취소</button>
+            </form>
+        </div>
+    </body>
+</body>
+</html>

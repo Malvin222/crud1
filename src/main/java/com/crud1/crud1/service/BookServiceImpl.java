@@ -35,25 +35,25 @@ public class BookServiceImpl implements BookService {
             .map(book -> modelMapper.map(book,BookDTO.class))
             .collect(Collectors.toList());
     }
-
-    @Override
-    public void bookremove(Long bookno) {
-        bookRepository.deleteById(bookno);
-    }
-    @Override
-    public void bookmodify(BookDTO bookdto) {
-        Optional<Book> result = bookRepository.findById(bookdto.getBookno());
-        Book book = result.orElseThrow();
-        book.bookchange(bookdto.getBookname(), bookdto.getBookcontent(),bookdto.getBookauthor());
-        bookRepository.save(book);
-    }
-
+    
     @Override
     public BookDTO bookread(Long bookno) {
         Optional<Book> book = bookRepository.findById(bookno);
         return modelMapper.map(book.orElse(new Book()), BookDTO.class);
     }
-
-
+    
+    
+    @Override
+    public void bookmodify(BookDTO bookDTO) {
+        Optional<Book> result = bookRepository.findById(bookDTO.getBookno());
+        Book book = result.orElseThrow();
+        book.bookchange(bookDTO.getBookname(), bookDTO.getBookcontent(),bookDTO.getBookauthor());
+        bookRepository.save(book);
+    }
+    
+    @Override
+    public void bookremove(Long bookno) {
+        bookRepository.deleteById(bookno);
+    }
 
 }
