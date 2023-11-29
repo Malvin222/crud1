@@ -48,6 +48,12 @@ public class BookServiceImpl implements BookService {
         bookRepository.save(book);
     }
 
+    @Override
+    public BookDTO bookread(Long bookno) {
+        Optional<Book> book = bookRepository.findById(bookno);
+        return modelMapper.map(book.orElse(new Book()), BookDTO.class);
+    }
+
 
 
 }

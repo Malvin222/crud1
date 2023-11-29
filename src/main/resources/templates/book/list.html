@@ -21,7 +21,7 @@
         <tbody>
             <tr th:each="book : ${bookDTOList}">
                 <td>
-                    <a th:href="@{/book/read(bookid=${book.bookid})}">
+                    <a th:href="@{/book/read(bookno=${book.bookno})}">
                     <span th:text="${book.bookname}"></span>
                     </a>
                 </td>

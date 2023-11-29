@@ -9,6 +9,8 @@ public interface BookService {
 
     List<BookDTO> findAll();
 
+    BookDTO bookread(Long bookno);
+
     void bookremove(Long bookno);
 
     void bookmodify(BookDTO bookdto);

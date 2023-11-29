@@ -31,7 +31,7 @@ public class BookController {
         log.info("=====POST book register=====");
 
         bookService.bookregister(bookdto);
-        return "redirect:/book/register";
+        return "redirect:/book/list";
     }
 
     @GetMapping("/list")
@@ -43,4 +43,16 @@ public class BookController {
         log.info(bookDTOList);
     }
     
+    @GetMapping("/read")
+    public String bookRead(Long bookno, Model model){
+
+        BookDTO bookDTO = bookService.bookread(bookno);
+        model.addAttribute("bookDTORead", bookDTO);
+        
+        log.info("=====bookDTORead=====");
+        log.info(bookDTO);
+        return "book/read";
+        }
+
+
 }

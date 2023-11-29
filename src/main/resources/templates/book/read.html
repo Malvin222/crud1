@@ -6,6 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <body>
+        <div>
+            <form name="frm" method="post">
+                <div>
+                    도서이름 <input type="text" id="bookname" name="bookname" th:value="${bookDTORead.bookname}">
+                </div>
+                <div>
+                    저자 <input type="text" id="bookauthor" name="bookauthor" th:value="${bookDTORead.bookauthor}">
+                </div>
+                <div>
+                    도서내용 <input type="text" id="bookcontent" name="bookcontent" th:value="${bookDTORead.bookcontent}">
+                </div>
+                <div>
+                    등록일 <input type="text" id="bookcontent" name="bookcontent" th:value="${bookDTORead.bookregdate}">
+                </div>
+                <div>
+                    수정일 <input type="text" id="bookcontent" name="bookcontent" th:value="${bookDTORead.bookmoddate}">
+                </div>
+                <button type="button"><a href="/book/modify">수정</a></button>
+            </form>
+        </div>
+    </body>
 </body>
 </html>
